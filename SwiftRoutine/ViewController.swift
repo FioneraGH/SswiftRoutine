@@ -9,6 +9,8 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    var currentPos:Float = -1;
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,15 +24,21 @@ class ViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        let alertController = UIAlertController(title: "Warning", message: "Are you sure ?", preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        alertController.addAction(UIAlertAction(title: "Confirm", style: .default, handler: {
-            action in
-            print(action.title ?? "Null")
-        }))
-        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    @IBAction func slideMove(slider: UISlider) {
+        currentPos = slider.value
+        print("Current: + \(currentPos)")
     }
 
+    @IBAction func showAlert() {
+        var showInfo = "Current: Invalid";
+        if (currentPos > 0) {
+            showInfo = "Current: + \(currentPos)"
+        }
+        let alertController = UIAlertController(title: "测试", message: showInfo, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "取消", style: .cancel, handler: nil))
+        present(alertController, animated: true, completion: nil)
+    }
 }
 
