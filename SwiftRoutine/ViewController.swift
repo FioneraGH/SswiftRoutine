@@ -25,20 +25,6 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
-    
-    @IBAction func slideMove(slider: UISlider) {
-        currentPos = slider.value
-        print("Current: + \(currentPos)")
-    }
 
-    @IBAction func showAlert() {
-        var showInfo = "Current: Invalid";
-        if (currentPos > 0) {
-            showInfo = "Current: + \(currentPos)"
-        }
-        let alertController = UIAlertController(title: "测试", message: showInfo, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "取消", style: .cancel, handler: nil))
-        present(alertController, animated: true, completion: nil)
-    }
 }
 
